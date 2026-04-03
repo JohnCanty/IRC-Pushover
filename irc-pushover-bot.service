@@ -1,0 +1,21 @@
+[Unit]
+Description=IRC to Pushover Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ircbot
+Group=ircbot
+WorkingDirectory=/opt/irc-pushover-bot
+ExecStart=/opt/irc-pushover-bot/venv/bin/python /opt/irc-pushover-bot/bot.py
+Restart=always
+RestartSec=10
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/irc-pushover-bot
+
+[Install]
+WantedBy=multi-user.target

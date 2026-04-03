@@ -1,0 +1,19 @@
+IRC_HOST=irc.FuPCInternational.com
+IRC_PORT=6697
+IRC_NICK=pushbot
+IRC_USERNAME=pushbot
+IRC_REALNAME=Pushbot
+IRC_CHANNEL=#alerts
+IRC_USE_TLS=true
+
+# optional
+IRC_SERVER_PASSWORD=
+IRC_SASL_USERNAME=pushbot
+IRC_SASL_PASSWORD=REPLACE_ME
+
+# comma-separated keywords; blank means "all messages"
+MATCH_KEYWORDS=alert,urgent,john
+
+PUSHOVER_TOKEN=REPLACE_WITH_APP_TOKEN
+PUSHOVER_USER=REPLACE_WITH_USER_OR_GROUP_KEY
+PUSHOVER_TITLE=IRC Alert
