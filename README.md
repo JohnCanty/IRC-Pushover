@@ -83,6 +83,24 @@ sudo -u ircbot /opt/irc-pushover-bot/venv/bin/pip install irc requests
 
 ## Step 6 – Create Environment Configuration File
 
+**Option A – Copy the included `Environment.txt` template from the repo:**
+
+```bash
+sudo cp /opt/irc-pushover-bot/Environment.txt /opt/irc-pushover-bot/.env
+sudo chown ircbot:ircbot /opt/irc-pushover-bot/.env
+sudo chmod 600 /opt/irc-pushover-bot/.env
+```
+
+Then edit the file and replace all `REPLACE_ME` / `REPLACE_WITH_*` placeholders with your actual values:
+
+```bash
+sudo -u ircbot nano /opt/irc-pushover-bot/.env
+```
+
+---
+
+**Option B – Create the file manually using a heredoc:**
+
 ```bash
 sudo -u ircbot tee /opt/irc-pushover-bot/.env > /dev/null <<'EOF'
 IRC_HOST=irc.FuPCInternational.com
@@ -112,6 +130,8 @@ EOF
 sudo chmod 600 /opt/irc-pushover-bot/.env
 sudo chown ircbot:ircbot /opt/irc-pushover-bot/.env
 ```
+
+> **Note:** Regardless of which option you choose, always ensure `.env` is owned by `ircbot` with permissions `600` so no other users can read it.
 
 ---
 
@@ -148,6 +168,16 @@ sudo -u ircbot /opt/irc-pushover-bot/venv/bin/python /opt/irc-pushover-bot/bot.p
 ---
 
 ## Step 9 – Create systemd Service
+
+**Option A – Copy the included service file from the repo:**
+
+```bash
+sudo cp /opt/irc-pushover-bot/irc-pushover-bot.service /etc/systemd/system/irc-pushover-bot.service
+```
+
+---
+
+**Option B – Create the service file manually:**
 
 ```bash
 sudo nano /etc/systemd/system/irc-pushover-bot.service
@@ -217,11 +247,11 @@ sudo systemctl restart irc-pushover-bot.service
 - Use a dedicated IRC account for the bot
 - Prefer SASL authentication
 - Restrict keyword filters to avoid spam
-- Store secrets securely (`chmod 600`)
+- Store secrets securely (`chmod 600`) or -> https://github.com/dmno-dev/varlock
 
 ---
 
-## Next Steps (Optional)
+## Next Steps
 
 - Add JOIN/PART notifications
 - Add rate limiting
