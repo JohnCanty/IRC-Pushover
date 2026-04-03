@@ -47,7 +47,7 @@ sudo useradd --system \
 ```bash
 sudo mkdir -p /opt/irc-pushover-bot
 sudo chown -R ircbot:ircbot /opt/irc-pushover-bot
-sudo -u ircbot git clone https://github.com/.git /opt/irc-pushover-bot
+sudo -u ircbot git clone https://github.com/JohnCanty/IRC-Pushover.git /opt/irc-pushover-bot
 ```
 
 If the repo already exists and you are updating it:
